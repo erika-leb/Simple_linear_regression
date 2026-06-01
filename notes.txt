@@ -1,0 +1,15 @@
+# regression lineaire par la methode de descente du gradient :
+# on calcule l'erreur quadratique moyenne 
+# e = 1/2m * somme pour i allant de 0 a m-1 de (estimatedPrice(mileage[i]) - price[i])**2
+# ou
+# e(a, b) = 1/2m *somme des (a*xi + b - yi)**2 
+# pour diminuer cette erreur, on calcule ses derivees partielles pour avoir le gradiant
+# de(a, b)/ da = 1/m * somme des (a*xi + b - yi) * xi
+# de(a, b)/ db = 1/m * somme des (a*xi + b - yi) * 1
+# de / da : variation de l'erreur quand varie a ie tetha1
+# de / db : variation de l'erreur quand varie b ie tetha0
+# le gradient indique le sens de la pente/vairation de l'erreur
+# on ajuste:
+# a = a - rate * de / da 
+# b = b - rate * de / db
+# on recommence jusqu'a ce que l'erreur soit proche de 0 

@@ -6,7 +6,7 @@ The project is split into two distinct programs: a training script that computes
 
 ---
 
-## 1. Mathematical Formulation & Algorithm
+## Mathematical Formulation & Algorithm
 
 ### Hypothesis Function
 The price estimation is modeled by the following affine function:
@@ -39,23 +39,3 @@ $$\theta_1 \leftarrow \theta_1 - \alpha \times \frac{\partial E}{\partial \theta
 
 Where $\alpha$ denotes the learning rate. This iterative process repeats until convergence (when the variation in error between two consecutive iterations falls below a predefined threshold $\epsilon$).
 
----
-
-## 2. Project Structure
-
-The project incorporates a critical **Min-Max normalization** step on the mileage data to fix scale disproportions between variables, ensuring numerical stability for the gradient descent during training. The parameters are then geometrically denormalized for real-world application.
-
-The repository contains the following components:
-* `train_model.py`: Loads the data from `data.csv`, applies normalization, executes the gradient descent loop, performs the geometric denormalization of the coefficients, and serializes the final $\theta_0$ and $\theta_1$ parameters into a persistent JSON file.
-* `predict.py`: An interactive program. It loads the JSON file containing $\theta_0$ and $\theta_1$, prompts the user to input a mileage via the terminal, validates data integrity, and outputs the estimated price rounded to the nearest integer.
-* `data.csv`: The dataset file containing the explanatory variable `km` and the target variable `price`.
-* `parameters.json`: A file generated after training that stores the serialized values of the theta parameters.
-
----
-
-## 3. Usage Instructions
-
-### Step 1: Train the Model
-Run the training script to process the data, optimize the parameters, and generate the configuration file:
-```bash
-python3 train_model.py
